@@ -6,19 +6,19 @@ class ComboRun_Filters:
 
     def filter_y(self,ymin=-1, ymax=1e6, update=True):
         #filter the y positiions to be within range ymin/ymax
-        f = np.array(list(map(lambda ypos : ymin < ypos < ymax, self.peak_ys)))
+        f = np.array(list(map(lambda ypos : ymin <= ypos <= ymax, self.peak_ys)))
         if update: self.filter = np.logical_and(f, self.filter) #update running filter
         return f
     
     def filter_x(self,xmin=-1, xmax=1e6, update=True):
          #filter the x positiions to be within range xmin/xmax
-        f = np.array(list(map(lambda xpos : xmin < xpos < xmax, self.peak_xs)))
+        f = np.array(list(map(lambda xpos : xmin <= xpos <= xmax, self.peak_xs)))
         if update: self.filter = np.logical_and(f, self.filter) #update running filter
         return f
 
     def filter_i(self, imin=-1, imax=1e6, sixth_root=True, update=True):
         sf = (1/6) if sixth_root else 1
-        f = np.array(list(map(lambda inten : imin < inten**(sf) < imax, self.peak_is)))
+        f = np.array(list(map(lambda inten : imin <= inten**(sf) <= imax, self.peak_is)))
         if update: self.filter = np.logical_and(f, self.filter) #update running filter
         return f
         

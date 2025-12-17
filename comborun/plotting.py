@@ -30,12 +30,15 @@ class ComboRun_Plots:
     def hist_y(self, f=None, bins=50, range=None):
         self._hist_plot(self.peak_ys, f=f, bins=bins, range=range)
 
+
+
+    
     def scatter_xy(self, f=None):
         self._scatter_plot(self.peak_xs, self.peak_ys, f=f, Xlabel='x', Ylabel='y')
     def scatter_xi(self, f=None):
         self._scatter_plot(self.peak_xs, self.peak_is**(1/6), f=f, Xlabel='x', Ylabel='I$^{1/6}$')
     def scatter_yi(self, f=None):
-        self._scatter_plot(self.peak_ys, self.peak_is**(1/6), f=f, Xlabel='x', Ylabel='I$^{1/6}$')
+        self._scatter_plot(self.peak_ys, self.peak_is**(1/6), f=f, Xlabel='y', Ylabel='I$^{1/6}$')
 
 
     def view_hit(self, i, f=None):

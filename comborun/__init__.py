@@ -10,8 +10,6 @@ class ComboRun(ComboRun_Filters, ComboRun_Plots):
 
     def __init__(self, fnames, hit_type='all'):
 
-        if type(fnames)==str:
-            fnames = [fnames]
         
         self.fnames = fnames
         self.hit_type = hit_type #single, multi, all
@@ -82,10 +80,8 @@ class ComboRun(ComboRun_Filters, ComboRun_Plots):
         return copy.deepcopy(self)
 
 
-
-def exclusion_pc(f):
-    if type(f) == ComboRuns: f = f.filter
-    return np.round((np.sum(f)/f.size)*100,2)
-
-
-
+def generate_filenames(ranges, a, let='a'):
+    files = []
+    for r in ranges:
+        files +=[f'/home/tejvarmay/scattering_data/data/newdata/data00{i}_analysis_{let}{a}/spts.cxi' for i in range(r[0], r[1])]
+    return files
